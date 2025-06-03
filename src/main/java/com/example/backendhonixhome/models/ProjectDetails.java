@@ -1,5 +1,6 @@
 package com.example.backendhonixhome.models;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import jakarta.persistence.*;
 
 import java.util.Set;
@@ -15,10 +16,14 @@ public class ProjectDetails {
 
     @OneToOne
     @JoinColumn(name = "project_id", referencedColumnName = "id")
+    @JsonBackReference
     private Project project;
 
     @OneToMany(mappedBy = "projectDetails", cascade = CascadeType.ALL)
     private Set<ProjectInquiry> inquiries;
+
+
+
 
     public ProjectDetails() {
     }

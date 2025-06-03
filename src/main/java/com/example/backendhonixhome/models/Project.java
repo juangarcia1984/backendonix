@@ -1,5 +1,6 @@
 package com.example.backendhonixhome.models;
 
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import jakarta.persistence.*;
 
 import java.util.Set;
@@ -14,15 +15,16 @@ public class Project {
     private String name;
 
     private String description;
+
     private String imageUrl;
 
     @ManyToOne
     @JoinColumn(name = "user_id")
     private User user;
 
-    @OneToOne
-    @JoinColumn(name = "project_id")
-    private Project project;
+    @OneToOne(mappedBy = "project", cascade = CascadeType.ALL)
+    @JsonManagedReference
+    private ProjectDetails projectDetails;
 
     public Project() {
     }
@@ -33,7 +35,7 @@ public class Project {
         this.description = description;
         this.imageUrl = imageUrl;
         this.user = user;
-        this.project = project;
+
     }
 
     public Long getId() {
@@ -76,11 +78,5 @@ public class Project {
         this.user = user;
     }
 
-    public Project getProject() {
-        return project;
-    }
 
-    public void setProject(Project project) {
-        this.project = project;
-    }
 }
