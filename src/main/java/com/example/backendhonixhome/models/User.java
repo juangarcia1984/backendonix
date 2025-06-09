@@ -20,10 +20,10 @@ public class User {
     @Column(nullable=false, unique=true)
     private String email;
 
-    @Column(nullable=false)
+    @Column(nullable = false)
     private String rol; // "admin", "user"
 
-    @OneToMany(mappedBy = "user")
+    @OneToMany(mappedBy = "user", cascade = CascadeType.ALL)
     private Set<Project> projects;
 
     public User() {

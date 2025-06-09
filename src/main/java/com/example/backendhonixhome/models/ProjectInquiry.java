@@ -9,15 +9,19 @@ import java.time.LocalDateTime;
 public class ProjectInquiry {
     @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-
+    @Column(nullable = false)
     private String name;
+    @Column(nullable = false)
     private String email;
+    @Column(nullable = false)
     private String message;
+    @Column(nullable = false)
     private LocalDateTime sentAt = LocalDateTime.now();
 
     @ManyToOne
-    @JoinColumn(name = "project_details_id")
+    @JoinColumn(name = "project_details_id", nullable = false)
     private ProjectDetails projectDetails;
+
     public ProjectInquiry() {
     }
 

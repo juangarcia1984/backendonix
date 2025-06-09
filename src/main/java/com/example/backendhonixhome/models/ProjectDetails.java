@@ -11,11 +11,11 @@ public class ProjectDetails {
     @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @Column(length = 2000)
+    @Column(length = 2000, nullable = false)
     private String detailedDescription;
 
     @OneToOne
-    @JoinColumn(name = "project_id", referencedColumnName = "id")
+    @JoinColumn(name = "project_id", referencedColumnName = "id", nullable = false)
     @JsonBackReference
     private Project project;
 
