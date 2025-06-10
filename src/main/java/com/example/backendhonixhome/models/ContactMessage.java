@@ -9,9 +9,16 @@ import java.time.LocalDateTime;
 public class ContactMessage {
     @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+
+    @Column(nullable = false)
     private String name;
+
+    @Column(nullable = false)
     private String email;
+
+    @Column(nullable = false)
     private String message;
+
     private LocalDateTime sentAt = LocalDateTime.now();
 
     public ContactMessage() {

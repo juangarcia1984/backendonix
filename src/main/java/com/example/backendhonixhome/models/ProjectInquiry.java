@@ -9,13 +9,13 @@ import java.time.LocalDateTime;
 public class ProjectInquiry {
     @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    @Column(nullable = false)
+
     private String name;
-    @Column(nullable = false)
+
     private String email;
-    @Column(nullable = false)
+
     private String message;
-    @Column(nullable = false)
+
     private LocalDateTime sentAt = LocalDateTime.now();
 
     @ManyToOne
